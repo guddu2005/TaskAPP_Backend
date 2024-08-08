@@ -8,21 +8,29 @@
    <style>
       body {
          font-family: Arial, sans-serif;
-         background-color: #f5f5f5;
+         background: linear-gradient(to right, #c4c9cb, #9fc6ef);
          color: #333;
          margin: 0;
          padding: 20px;
          animation: fadeIn 1s ease-in;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         height: 100vh;
+         overflow: hidden;
+         position: relative;
       }
 
       h2 {
          text-align: center;
          animation: slideIn 0.5s ease-in-out;
+         color: #fff;
       }
 
       p {
          text-align: center;
          animation: slideIn 0.7s ease-in-out;
+         color: #fff;
       }
 
       a,
@@ -31,18 +39,19 @@
          margin: 10px auto;
          padding: 10px 20px;
          color: #fff;
-         background-color: #4CAF50;
+         background-color: #ff6347;
          border: none;
          border-radius: 5px;
          text-decoration: none;
          text-align: center;
          transition: background-color 0.3s ease, transform 0.3s ease;
          cursor: pointer;
+         animation: pulse 2s infinite;
       }
 
       a:hover,
       button:hover {
-         background-color: #45a049;
+         background-color: #ff4500;
          transform: translateY(-3px);
       }
 
@@ -51,11 +60,27 @@
       }
 
       form button {
-         background-color: #f44336;
+         background-color: #ff6347;
       }
 
       form button:hover {
-         background-color: #e53935;
+         background-color: #ff4500;
+      }
+
+      .task-container {
+         border: 1px solid rgba(255, 255, 255, 0.7);
+         box-shadow: inset 5px 5px 8px rgba(255, 255, 255, 0.3);
+         border-radius: 15px;
+         width: 550px;
+         padding: 20px;
+         background: rgba(255, 255, 255, 0.1);
+         animation: fadeIn 1.5s ease-in-out;
+         transform: scale(0.9);
+         transition: transform 0.5s ease-in-out;
+      }
+
+      .task-container:hover {
+         transform: scale(1);
       }
 
       @keyframes fadeIn {
@@ -73,24 +98,92 @@
             transform: translateY(-20px);
             opacity: 0;
          }
-
          to {
             transform: translateY(0);
             opacity: 1;
          }
       }
+
+      @keyframes pulse {
+         0% {
+            transform: scale(1);
+         }
+         50% {
+            transform: scale(1.05);
+         }
+         100% {
+            transform: scale(1);
+         }
+      }
+
+      .bubble {
+         position: absolute;
+         bottom: -50px;
+         background: rgba(255, 255, 255, 0.7);
+         border-radius: 50%;
+         opacity: 0.6;
+         animation: rise 8s infinite ease-in;
+      }
+
+      @keyframes rise {
+         0% {
+            transform: translateY(0);
+            opacity: 0.7;
+         }
+         50% {
+            opacity: 1;
+         }
+         100% {
+            transform: translateY(-100vh);
+            opacity: 0.2;
+         }
+      }
+
+      .bubble:nth-child(1) {
+         width: 40px;
+         height: 40px;
+         left: 20%;
+         animation-duration: 5s;
+      }
+
+      .bubble:nth-child(2) {
+         width: 20px;
+         height: 20px;
+         left: 40%;
+         animation-duration: 6s;
+      }
+
+      .bubble:nth-child(3) {
+         width: 50px;
+         height: 50px;
+         left: 60%;
+         animation-duration: 7s;
+      }
+
+      .bubble:nth-child(4) {
+         width: 25px;
+         height: 25px;
+         left: 80%;
+         animation-duration: 8s;
+      }
+
+      .bubble:nth-child(5) {
+         width: 30px;
+         height: 30px;
+         left: 50%;
+         animation-duration: 9s;
+      }
    </style>
 </head>
 
 <body>
-   <div style="border: 1px solid black; box-shadow: inset  5px 5px 8px rgba(133, 102, 102, 0.5); border-radius: 15px; width: 550px; padding: 10px; ">
+   <div class="task-container" style="background-color: gray;">
       <h2>
          <%= task.title %>
       </h2>
       <p>
          <%= task.description %>
       </p>
-
       <div style="text-align: center;">
          <a href="/task/edit/<%= task._id %>">EDIT</a>
          <form action="/task/<%= task._id %>?_method=DELETE" method="POST" style="display: inline;">
@@ -99,6 +192,11 @@
          <a href="/task">Back to tasks</a>
       </div>
    </div>
+   <div class="bubble"></div>
+   <div class="bubble"></div>
+   <div class="bubble"></div>
+   <div class="bubble"></div>
+   <div class="bubble"></div>
 </body>
 
 </html>

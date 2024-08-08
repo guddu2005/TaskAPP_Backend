@@ -58,20 +58,19 @@
 
     ul {
       padding: 0;
-      width: 100%;
-      max-width: 800px;
+      width: 90%;
     }
 
     li {
       list-style: none;
       margin: 10px 0;
-      padding: 20px;
+      padding: 15px;
       background: white;
       border-radius: 10px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
       text-align: left;
-      width: 100%;
+      width: 95%;
       animation: fadeIn 0.5s ease-in, bounceIn 1s ease-out;
     }
 
@@ -106,7 +105,7 @@
 
     li a {
       text-decoration: none;
-      color: #333;
+      color:blue;
       font-size: 1.2em;
     }
 
@@ -124,10 +123,11 @@
       <ul style="display: flex; justify-content: space-around;">
         <li style="margin-left: 250px;"><a href="/task">Home</a></li>
         <li style="margin-left: 250px;"><a href="/task/new">Add Task</a></li>
+        <li style="margin-left: 250px;"><a href="/login">Login</a></li>
       </ul>
     </nav>
   </header>
-  <ul style="position: relative; top: 30px;">
+  <ul style="position: relative; top: 40px;">
     <% tasks.forEach(task => { %>
     <li>
       <a href="/task/<%= task._id %>"><%= task.title %></a>

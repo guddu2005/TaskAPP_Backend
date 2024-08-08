@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -66,10 +67,19 @@
             background-color: #ff6347;
             transform: scale(1.1);
         }
+
+         button a {
+            text-decoration: none;
+            color: black;
+            height: 10px;
+        }
     </style>
 </head>
+
 <body>
+
     <h1>Add Task</h1>
+    <button><a href="/task">Back To Tasks</a></button>
     <form action="/task" method="post">
         <label for="task">Add Task</label>
         <input type="text" name="title" placeholder="Enter task">
@@ -78,4 +88,5 @@
         <button type="submit">Add</button>
     </form>
 </body>
+
 </html>

@@ -43,7 +43,18 @@
         border: 1px solid #ccc;
         border-radius: 4px;
       }
-
+      form input[type="password"] {
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      form input[type="email"] {
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
       form button {
         padding: 10px;
         background-color: #007bff;
@@ -64,13 +75,21 @@
   </head>
   <body>
     <h1>Signup</h1>
+    <% if(locals.error) %>
+    <div>
+      <%= locals.error %>
+    </div>
+    <% if(locals.err) %>
+    <div>
+      <%= locals.err %>
+    </div>
     <form action="/user" method="post">
       <label>Full Name</label>
       <input type="text" required name="name" />
       <label>Email</label>
-      <input type="text" required name="email" />
+      <input type="email" required name="email" />
       <label>Password</label>
-      <input type="text" required name="password" />
+      <input type="password" required name="password" />
 
       <button type="submit">Signup</button>
     </form>

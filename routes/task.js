@@ -10,6 +10,4 @@ taskRouter.get("/edit/:id" , taskController.editTaskGet);
 taskRouter.put("/:id" ,taskController.editTaskPost);
 taskRouter.delete("/:id" , taskController.deleteTask)
 
-module.exports ={
-    taskRouter,
-}
+module.exports =taskRouter;

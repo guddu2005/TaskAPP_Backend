@@ -43,6 +43,19 @@
         border: 1px solid #ccc;
         border-radius: 4px;
       }
+      form input[type="password"] {
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      form input[type="email"] {
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+    
 
       form button {
         padding: 10px;
@@ -66,9 +79,9 @@
     <h1>Login</h1>
     <form action="/user/login" method="post">
       <label>Email</label>
-      <input type="text" required name="email" />
+      <input type="email" required name="email" />
       <label>Password</label>
-      <input type="text" required name="password" />
+      <input type="password" required name="password" />
 
       <button type="submit">Login</button>
     </form>

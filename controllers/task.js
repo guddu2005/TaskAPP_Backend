@@ -3,7 +3,8 @@ const { Task } = require("../models/task");
 
 //render all task
 const taskIndex = (req, res) => {
-    Task.find()
+    if(!req.user) return res.redirect("/login");
+    Task.find({createdBy:req.user._id})
         .then(tasks => {
             res.render('home', { tasks })
         })
@@ -22,7 +23,8 @@ const newTask = (req, res) => {
 const postTask = async (req, res) => {
     const { title, description } = req.body;
     if(title && description){
-        const task = new Task({title , description});
+        if(!req.user) return res.redirect("/login");
+        const task = new Task({title , description ,createdBy:req.user._id});
         try {
             await task.save();
             res.redirect("/task");
