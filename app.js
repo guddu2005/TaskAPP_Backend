@@ -2,6 +2,7 @@ const express = require("express");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const methodOverride = require("method-override");
+const cors = require("cors")
 
 const { restrictToLoggedUserOnly, checkAuth } = require("./middlewares/auth");
 const taskRouter = require("./routes/task");
@@ -26,6 +27,13 @@ app.use(methodOverride('_method'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(cors(
+    {
+        origin:["https://deploy-taskapp.vercel.app"],
+        methods:["POST" ,"GET"],
+        credentials:true
+    }
+));
 
 app.use("/task",restrictToLoggedUserOnly, taskRouter);
 app.use("/user", userRouter);
